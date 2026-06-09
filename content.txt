@@ -1,0 +1,40 @@
+Home/
+Hero, Explore, RecentNews, Highlights
+
+About/
+Hero, AboutUs, Facility, ExplorePlaces
+
+Shopping/
+[Hero, RightAdsSection] , [LeftAds ,Stores] , BottomAds, Highlights
+
+--------------------------------------------------------------------------
+<<Home>>
+Home Hero: Background image, Title, description, watermark
+Explore: Leftside: Explorecards , Rightside: Title, description, two buttons
+ RecentNews: Title, description, 3 RecentNews cards
+
+<<About>>
+About Hero: Background Image, Title, Description, open days and times
+AboutsUs: Images grid, Titile , description
+Facility: Bg image, 3 facility cards grid
+ExplorePlaces: Title, description, 4 Explore cards row 
+
+<<Shopping>>
+Shopping Hero: Background Image, Title, Description, open days and times
+Stores: Seacrch, StoreCard, Pagination
+All Ads Sections: Slideshowing ads
+
+--------------------------------------------------------------------------
+
+
+Components/
+Highlights: Title, Slider,Gallery(Use GallterySets)
+GallerySet: ImagesSet, reverseImageSet
+Pagination: 6 cards per page, pages numbers with higlighing current page and have next prev buttons
+StoreCard:Visit Store button, Bsckground Image, Store name with logo
+NewsCard:Image, title, description
+ExploreCard: Logo , description, Explore button, Backgorund image(optional):default transparent background
+
+StoreCardDetail:
+SpecialAlertPopup:
+

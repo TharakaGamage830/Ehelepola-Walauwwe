@@ -1,0 +1,35 @@
+src/
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── About.jsx
+│   └── Shopping.jsx
+│
+├── components/
+│   ├── common/
+│   │   ├── Highlights.jsx
+│   │   ├── GallerySet.jsx
+│   │   ├── Pagination.jsx
+│   │   ├── ExploreCard.jsx
+│   │   ├── NewsCard.jsx
+│   │   ├── StoreCard.jsx
+│   │   ├── StoreCardDetail.jsx
+│   │   └── SpecialAlertPopup.jsx
+│
+├── services/
+│   ├── home.service.js
+│   ├── about.service.js
+│   └── shopping.service.js
+│
+├── mocks/
+│   ├── home.mock.js
+│   ├── about.mock.js
+│   └── shopping.mock.js
+│
+├── hooks/
+│   ├── useHomeData.js
+│   ├── useAboutData.js
+│   └── useShoppingData.js
+│
+└── utils/
+    └── helpers.js
