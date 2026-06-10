@@ -1,4 +1,3 @@
-import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useHomeData } from "../hooks/useHomeData";
 import ExploreCard from "../components/common/ExploreCard";
@@ -52,27 +51,11 @@ const Home = () => {
 
         {/* Content */}
         <div className="relative z-20 flex flex-col items-center text-center px-6 gap-6 md:gap-6 mt-16 md:mt-0">
-          <h1
-            className="text-primary hidden md:block"
-            style={{
-              fontFamily: "Milchella, serif",
-              fontWeight: 400,
-              fontSize: "clamp(48px, 8vw, 100px)",
-              lineHeight: "100%",
-            }}
-          >
+          <h1 className="text-primary hidden md:block font-milchella font-normal text-[clamp(48px,8vw,100px)] leading-[100%]">
             {hero.title}
           </h1>
           {/* Mobile Title - explicit two lines */}
-          <h1
-            className="text-primary md:hidden"
-            style={{
-              fontFamily: "Milchella, serif",
-              fontWeight: 400,
-              fontSize: "64px",
-              lineHeight: "90%",
-            }}
-          >
+          <h1 className="text-primary md:hidden font-milchella font-normal text-[64px] leading-[90%]">
             Ehelepola
             <br />
             Walauwwe
@@ -118,27 +101,10 @@ const Home = () => {
           ></div>
 
           <div className="relative z-10 flex flex-col gap-[8px] text-center md:text-left text-white w-full">
-            <h3
-              style={{
-                fontFamily: "'Wasted Vindey', serif",
-                fontSize: "24px",
-                fontWeight: 400,
-                lineHeight: "100%",
-                margin: 0,
-              }}
-            >
+            <h3 className="font-wasted font-normal text-[24px] leading-[100%] m-0">
               {specialAlert.title}
             </h3>
-            <p
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: "16px",
-                fontWeight: 400,
-                lineHeight: "100%",
-                color: "#FFFFFF",
-                margin: 0,
-              }}
-            >
+            <p className="font-poppins font-normal text-[16px] leading-[100%] text-white m-0">
               {specialAlert.description}
             </p>
           </div>
@@ -160,16 +126,7 @@ const Home = () => {
               }}
             ></div>
 
-            <span
-              className="relative z-10"
-              style={{
-                fontFamily: "'Poppins', sans-serif",
-                fontSize: "16px",
-                fontWeight: 500,
-                lineHeight: "100%",
-                color: "#FFFFFF",
-              }}
-            >
+            <span className="relative z-10 font-poppins font-medium text-[16px] leading-[100%] text-white">
               {specialAlert.buttonLabel}
             </span>
             <svg
@@ -215,15 +172,7 @@ const Home = () => {
 
         {/* Right — Title + Description + Buttons */}
         <div className="relative z-10 w-full lg:w-1/2 flex flex-col justify-center gap-6 mt-8 lg:mt-0">
-          <h2
-            className="text-primary"
-            style={{
-              fontFamily: "Milchella, serif",
-              fontWeight: 400,
-              fontSize: "clamp(40px, 10vw, 56px)",
-              lineHeight: "110%",
-            }}
-          >
+          <h2 className="text-primary font-milchella font-normal text-[clamp(40px,10vw,56px)] leading-[110%]">
             {explore.title}
           </h2>
           <p className="font-poppins font-light text-primary/80 text-[13px] lg:text-[15px] leading-2 lg:leading-7 text-justify">
@@ -253,15 +202,7 @@ const Home = () => {
       <section className="w-full flex flex-col items-center gap-10 py-16 overflow-hidden">
         {/* Title + Description */}
         <div className="flex flex-col items-center gap-4 text-center px-4">
-          <h2
-            className="text-primary"
-            style={{
-              fontFamily: "Milchella",
-              fontWeight: 400,
-              fontSize: "50px",
-              lineHeight: "100%",
-            }}
-          >
+          <h2 className="text-primary font-milchella font-normal text-[50px] leading-[100%]">
             {recentNews.title}
           </h2>
           <p

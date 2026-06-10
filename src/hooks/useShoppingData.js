@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { getShoppingData } from '../services/shopping.service';
+// import { getShoppingData } from '../services/shopping.service';
 
 export const useShoppingData = () => {
-  const [data, setData] = useState(null);
+  const [data] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 

@@ -2,10 +2,7 @@ const ImageSet = ({ images }) => {
   return (
     <>
       {/* Mobile View — 3×2 grid, positions 1+3 merged on left */}
-      <div
-        className="grid grid-cols-2 gap-3 w-full md:hidden"
-        style={{ gridTemplateRows: '1fr 1fr 1fr' }}
-      >
+      <div className="grid grid-cols-2 grid-rows-3 gap-3 w-full md:hidden">
         {/* images[0]: col 1, row 1–2 (tall merged) */}
         <div className="rounded-[16px] overflow-hidden relative row-span-2">
           <img
@@ -15,7 +12,7 @@ const ImageSet = ({ images }) => {
           />
         </div>
         {/* images[1]: col 2, row 1 */}
-        <div className="rounded-[16px] overflow-hidden relative" style={{ aspectRatio: '3/2' }}>
+        <div className="rounded-[16px] overflow-hidden relative aspect-[3/2]">
           <img
             src={images[1]}
             alt="gallery-m-2"
@@ -23,7 +20,7 @@ const ImageSet = ({ images }) => {
           />
         </div>
         {/* images[2]: col 2, row 2 */}
-        <div className="rounded-[16px] overflow-hidden relative" style={{ aspectRatio: '3/2' }}>
+        <div className="rounded-[16px] overflow-hidden relative aspect-[3/2]">
           <img
             src={images[2]}
             alt="gallery-m-3"
@@ -31,7 +28,7 @@ const ImageSet = ({ images }) => {
           />
         </div>
         {/* images[3]: col 1, row 3 */}
-        <div className="rounded-[16px] overflow-hidden relative" style={{ aspectRatio: '3/2' }}>
+        <div className="rounded-[16px] overflow-hidden relative aspect-[3/2]">
           <img
             src={images[3]}
             alt="gallery-m-4"
@@ -39,7 +36,7 @@ const ImageSet = ({ images }) => {
           />
         </div>
         {/* images[4]: col 2, row 3 */}
-        <div className="rounded-[16px] overflow-hidden relative" style={{ aspectRatio: '3/2' }}>
+        <div className="rounded-[16px] overflow-hidden relative aspect-[3/2]">
           <img
             src={images[4]}
             alt="gallery-m-5"
@@ -49,17 +46,17 @@ const ImageSet = ({ images }) => {
       </div>
 
       {/* Desktop View */}
-      <div className="hidden md:grid grid-cols-3 gap-[27px] w-full" style={{ aspectRatio: '1245/568' }}>
+      <div className="hidden md:grid grid-cols-3 gap-[27px] w-full aspect-[1245/568]">
         {/* Column 1: Variable heights */}
         <div className="flex flex-col gap-[27px] h-full overflow-hidden min-h-0">
-          <div className="rounded-[20px] overflow-hidden min-h-0 relative" style={{ flexGrow: 391, flexBasis: 0 }}>
+          <div className="rounded-[20px] overflow-hidden min-h-0 relative grow-[391] basis-0">
             <img
               src={images[0]}
               alt="gallery-1-1"
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
-          <div className="rounded-[20px] overflow-hidden min-h-0 relative" style={{ flexGrow: 159, flexBasis: 0 }}>
+          <div className="rounded-[20px] overflow-hidden min-h-0 relative grow-[159] basis-0">
             <img
               src={images[1]}
               alt="gallery-1-2"
@@ -103,12 +100,9 @@ const ReverseImageSet = ({ images }) => {
   return (
     <>
       {/* Mobile View — 3×2 grid, positions 4+6 merged on right */}
-      <div
-        className="grid grid-cols-2 gap-3 w-full md:hidden"
-        style={{ gridTemplateRows: '1fr 1fr 1fr' }}
-      >
+      <div className="grid grid-cols-2 grid-rows-3 gap-3 w-full md:hidden">
         {/* images[0]: col 1, row 1 */}
-        <div className="rounded-[16px] overflow-hidden relative" style={{ aspectRatio: '3/2' }}>
+        <div className="rounded-[16px] overflow-hidden relative aspect-[3/2]">
           <img
             src={images[0]}
             alt="gallery-m-r1"
@@ -116,7 +110,7 @@ const ReverseImageSet = ({ images }) => {
           />
         </div>
         {/* images[1]: col 2, row 1 */}
-        <div className="rounded-[16px] overflow-hidden relative" style={{ aspectRatio: '3/2' }}>
+        <div className="rounded-[16px] overflow-hidden relative aspect-[3/2]">
           <img
             src={images[1]}
             alt="gallery-m-r2"
@@ -124,7 +118,7 @@ const ReverseImageSet = ({ images }) => {
           />
         </div>
         {/* images[2]: col 1, row 2 */}
-        <div className="rounded-[16px] overflow-hidden relative" style={{ aspectRatio: '3/2' }}>
+        <div className="rounded-[16px] overflow-hidden relative aspect-[3/2]">
           <img
             src={images[2]}
             alt="gallery-m-r3"
@@ -140,7 +134,7 @@ const ReverseImageSet = ({ images }) => {
           />
         </div>
         {/* images[4]: col 1, row 3 */}
-        <div className="rounded-[16px] overflow-hidden relative" style={{ aspectRatio: '3/2' }}>
+        <div className="rounded-[16px] overflow-hidden relative aspect-[3/2]">
           <img
             src={images[4]}
             alt="gallery-m-r5"
@@ -150,7 +144,7 @@ const ReverseImageSet = ({ images }) => {
       </div>
 
       {/* Desktop View */}
-      <div className="hidden md:grid grid-cols-3 gap-[27px] w-full" style={{ aspectRatio: '1245/568' }}>
+      <div className="hidden md:grid grid-cols-3 gap-[27px] w-full aspect-[1245/568]">
         {/* Column 1: Full height */}
         <div className="h-full rounded-[20px] overflow-hidden min-h-0 relative">
           <img
@@ -180,14 +174,14 @@ const ReverseImageSet = ({ images }) => {
 
         {/* Column 3: Variable heights */}
         <div className="flex flex-col gap-[27px] h-full overflow-hidden min-h-0">
-          <div className="rounded-[20px] overflow-hidden min-h-0 relative" style={{ flexGrow: 391, flexBasis: 0 }}>
+          <div className="rounded-[20px] overflow-hidden min-h-0 relative grow-[391] basis-0">
             <img
               src={images[3]}
               alt="gallery-3-1"
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
-          <div className="rounded-[20px] overflow-hidden min-h-0 relative" style={{ flexGrow: 159, flexBasis: 0 }}>
+          <div className="rounded-[20px] overflow-hidden min-h-0 relative grow-[159] basis-0">
             <img
               src={images[4]}
               alt="gallery-3-2"
