@@ -7,7 +7,7 @@ const Shopping = () => {
       <section></section>
       {/* ── Highlights Section ── */}
       <section>
-        <Highlights />
+        {/* <Highlights /> */}
       </section>
     </>
   );

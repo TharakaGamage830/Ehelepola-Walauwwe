@@ -1,9 +1,9 @@
 // src/mocks/about.mock.js
 
 // ── About Page Images ──
-import heroBg from "../assets/img/about/HeroBackground.png";
-import historyBg from "../assets/img/about/HistoryBackground.png";
-import featureBg from "../assets/img/about/FeatureBackground.png";
+import heroBg from "../assets/img/about/HeroBackground.webp";
+import historyBg from "../assets/img/about/HistoryBackground.webp";
+import featureBg from "../assets/img/about/FeatureBackground.webp";
 
 // ── Previewer Images ──
 import previewer1 from "../assets/img/about/previewer/image1.png";
@@ -19,6 +19,11 @@ import kingsCourtLogo from "../assets/img/explore/king-court-logo.png";
 
 // ── Explore Card BG ──
 import exploreBg from "../assets/img/explore/explore-bg.png";
+
+// ── Feature Icons ──
+import crownIcon from "../assets/img/about/featureIcon/crown.svg";
+import reactIcon from "../assets/img/about/featureIcon/react.svg";
+import prisonIcon from "../assets/img/about/featureIcon/prison.svg";
 
 export const aboutMock = {
   // Hero
@@ -49,14 +54,17 @@ export const aboutMock = {
     cards: [
       {
         id: 1,
+        icon: crownIcon,
         text: "Lifelike wax statues of all nine kings of the Kandyan Kingdom (1594 - 1815) and key figures like Ehelepola Adhikaram and British colonial administrators.",
       },
       {
         id: 2,
+        icon: reactIcon,
         text: "AI-enhanced exhibits with vivid details, from royal costumes to dramatic historical scenes, immersive, interactive, lifelike, educational, captivating.",
       },
       {
         id: 3,
+        icon: prisonIcon,
         text: "The Prison Arcade, where British-era prison cells now showcase traditional Sri Lankan crafts perfect for unique souvenirs.",
       },
     ],
@@ -81,7 +89,7 @@ export const aboutMock = {
         logo: courtyardLogo,
         description: "A traditional Sinhala courtyard for gatherings.",
         backgroundImage: exploreBg,
-        link: "/courtyard",
+        link: "/courtyard" || "https://www.ehelepolawalawwa.lk/courtyard",
       },
       {
         id: 3,
@@ -89,7 +97,7 @@ export const aboutMock = {
         description:
           "Explore 12 rooms telling tales of royalty, rebellion, and resilience.",
         backgroundImage: exploreBg,
-        link: "/wax-museum",
+        link: "/waxmuseum" || "https://waxmuseum.ehelepolawalawwa.lk/",
       },
       {
         id: 4,
@@ -97,7 +105,7 @@ export const aboutMock = {
         description:
           "Savor rich, traditional Kandyan-era flavors at the on-site restaurant.",
         backgroundImage: exploreBg,
-        link: "/kings-court",
+        link:  "/kingscourt" || "https://www.ehelepolawalawwa.lk/kingscourt",
       },
     ],
   },

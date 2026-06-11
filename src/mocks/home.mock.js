@@ -7,16 +7,17 @@ import waxMuseumLogo from '../assets/img/explore/wax-mesuem-logo.png';
 import kingsCourtLogo from '../assets/img/explore/king-court-logo.png';
 
 // ── Hero ──
-import heroBg from '../assets/img/home/HeroBackground.png';
+import heroBg from '../assets/img/home/HeroBackground.webp';
+import heroBgVideo from '../assets/img/home/HeroBackground.mp4';
 import heroWatermark from '../assets/img/home/HeroWatermark.png';
 
 // ── Explore ──
-import exploreBg from '../assets/img/home/ExploreBackground.png';
+import exploreBg from '../assets/img/home/ExploreBackground.webp';
 
 // ── Recent News ──
-import news1 from '../assets/img/home/news/news1.png';
-import news2 from '../assets/img/home/news/news2.png';
-import news3 from '../assets/img/home/news/news3.png';
+import president from '../assets/img/home/news/president.webp';
+import tourists from '../assets/img/home/news/tourists.webp';
+import pirith from '../assets/img/home/news/pirith.webp';
 
 
 
@@ -25,6 +26,7 @@ export const homeMock = {
   // Hero
   hero: {
     backgroundImage: heroBg,
+    backgroundVideo: heroBgVideo,
     watermark: heroWatermark,
     title: 'Ehelepola Walauwwe',
     description:
@@ -36,8 +38,8 @@ export const homeMock = {
     title: 'School Student Reservation',
     description:
       "Don't miss out on this exclusive opportunity. Slots fill up fast reserve your visit today!",
-    buttonLabel: 'Click here to book rereservation',
-    buttonLink: '/reservation',
+    buttonLabel: 'Click here to book reservation',
+    buttonLink: 'https://www.ehelepolawalawwa.lk/reservation',
   },
 
   // Explore Section
@@ -61,21 +63,21 @@ export const homeMock = {
         logo: courtyardLogo,
         description:
           'A tranquil sanctuary where ancient stone walls whisper tales of yesteryear, offering visitors peaceful moments amidst beautifully landscaped heritage gardens.',
-        link: '/courtyard',
+        link: 'https://www.ehelepolawalawwa.lk/courtyard',
       },
       {
         id: 3,
         logo: waxMuseumLogo,
         description:
           "Thirty-five lifelike figures bring Sri Lanka's greatest heroes to life, surrounded by exhibits showcasing Kandyan architecture, royal customs, and traditional crafts.",
-        link: '/wax-museum',
+        link: 'https://waxmuseum.ehelepolawalawwa.lk/',
       },
       {
         id: 4,
         logo: kingsCourtLogo,
         description:
           'Authentic royal dining experience recreating ancient culinary traditions, where traditional flavors meet regal ambiance in a restaurant fit for royalty.',
-        link: '/kings-court',
+        link: 'https://www.ehelepolawalawwa.lk/kingscourt',
       },
     ],
   },
@@ -88,21 +90,21 @@ export const homeMock = {
     news: [
       {
         id: 1,
-        image: news1,
+        image: president,
         title: 'Presidential Inauguration Ceremony',
         description:
           "President Anura Kumara Dissanayake officially opened the Wax Museum at historic Ehelepola Walawwa the first ever wax museum in Sri Lanka on the 17th of July 2025, marking a significant milestone in Sri Lanka's cultural tourism development and heritage preservation efforts in the ancient capital.",
       },
       {
         id: 2,
-        image: news2,
+        image: tourists,
         title: 'Heritage Tourism Milestone Achieved',
         description:
           'The transformation of this 400-year-old heritage walauwa Sri Lanka into a premier cultural destination represents a groundbreaking achievement in preserving historic mansions in Sri Lanka for future generations.',
       },
       {
         id: 3,
-        image: news3,
+        image: pirith,
         title: 'Sacred Restoration Complete',
         description:
           "Under Temple of the Sacred Tooth Relic Stewardship, Enelepola Walauwa's restoration was blessed through Pifith cnanting ceremonies on June 30 and July 01, honoring ancestral traditions while embracing modernity.",

@@ -10,7 +10,7 @@ const ExploreCard = ({
     <div className="relative mx-auto w-full h-[400px] lg:h-[360px] pb-6 flex flex-col">
       {/* Card body — arch shape, fills height */}
       <div
-        className={`relative rounded-t-full rounded-b-none overflow-hidden border-2 flex-grow flex flex-col ${hasBg ? 'border-white/70' : 'border-primary/40'
+        className={`relative rounded-t-full rounded-b-2xl overflow-hidden border-2 flex-grow flex flex-col ${hasBg ? 'border-white/70' : 'border-primary/40'
           }`}
         style={
           hasBg
@@ -19,16 +19,27 @@ const ExploreCard = ({
         }
       >
         {/* Dark overlay specifically for background image variant */}
-        {hasBg && <div className="absolute inset-0 bg-black/60 z-[5] pointer-events-none" />}
+        {hasBg && <div className="absolute inset-0 bg-black/20 z-[5] pointer-events-none" />}
 
-        {/* Top → Middle Gradient */}
-        <div className={`absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b to-transparent z-10 pointer-events-none ${hasBg ? 'from-black/90' : 'from-surface'}`} />
+        {/* Top Gradient */}
+        <div
+          className="absolute inset-x-0 top-0 z-10 pointer-events-none"
+          style={{
+            height: '45%',
+            background: `linear-gradient(to bottom, #131313 0%, #131313 30%, transparent 100%)`
+          }}
+        />
 
-        {/* Bottom → Middle Gradient */}
-        <div className={`absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t to-transparent z-10 pointer-events-none ${hasBg ? 'from-black/90' : 'from-surface'}`} />
-
+        {/* Bottom Gradient */}
+        <div
+          className="absolute inset-x-0 bottom-0 z-10 pointer-events-none"
+          style={{
+            height: '45%',
+            background: `linear-gradient(to top, #131313 0%, #131313 30%, transparent 100%)`
+          }}
+        />
         {/* Content */}
-        <div className="relative z-20 flex flex-col items-center text-center px-4 pt-10 pb-12 gap-4 h-full justify-start">
+        <div className="relative z-20 flex flex-col items-center text-center px-4 pt-10 pb-6 gap-4 h-full justify-between">
           {/* Logo */}
           <div className="w-[160px] h-[90px] flex items-center justify-center mt-2 shrink-0">
             <img
@@ -39,10 +50,10 @@ const ExploreCard = ({
           </div>
 
           {/* Divider */}
-          <div className={`w-10 h-[1px] ${hasBg ? 'bg-white/40' : 'bg-primary/40'}`} />
+          {!hasBg && <div className="w-10 h-[1px] bg-primary/40" />}
 
           {/* Description */}
-          <p className={`font-poppins font-light text-[12px] leading-relaxed max-w-[200px] ${hasBg ? 'text-white/90' : 'text-primary/90'}`}>
+          <p className={`font-poppins mb-12 font-light text-[14px] max-w-[200px] ${hasBg ? 'text-white/90' : 'text-primary/90'}`}>
             {description}
           </p>
         </div>
@@ -52,11 +63,7 @@ const ExploreCard = ({
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-30">
         <button
           onClick={onExplore}
-          className={`px-8 py-3 rounded-xl border font-poppins font-semibold text-[14px] transition-all duration-300 whitespace-nowrap
-            ${hasBg
-              ? 'bg-[#1A1A1A] border-white/30 text-white hover:bg-white hover:text-black'
-              : 'bg-surface border-primary/30 text-primary hover:bg-primary hover:text-surface'
-            }`}
+          className={`px-8 py-3 rounded-xl border font-poppins font-semibold text-[14px] transition-all duration-300 whitespace-nowrap bg-[#000000] border-white/30 text-white hover:bg-white hover:text-black`}
         >
           Explore More
         </button>

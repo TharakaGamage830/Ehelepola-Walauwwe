@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useHomeData } from "../hooks/useHomeData";
 import ExploreCard from "../components/common/ExploreCard";
@@ -9,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 const Home = () => {
   const navigate = useNavigate();
   const { hero, specialAlert, explore, recentNews, loading } = useHomeData();
+  const [videoReady, setVideoReady] = useState(false);
 
   if (loading) return null;
 
@@ -39,19 +41,40 @@ const Home = () => {
     <main className="w-full bg-surface overflow-x-hidden">
       {/* ── Hero Section ── */}
       <section className="relative w-full h-screen flex flex-col items-center justify-center">
-        {/* Background Image */}
+        
+        {/* Background Image — shows while video loads */}
         <img
           src={hero.backgroundImage}
           alt="hero background"
-          className="absolute inset-0 w-full h-full object-cover object-center z-0"
+          className="absolute inset-0 w-full h-full object-cover object-[center_60%] z-0"
+        />
+
+        {/* Background Video — fades in when ready */}
+        <video
+          src={hero.backgroundVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          onCanPlay={() => setVideoReady(true)}
+          className={`absolute inset-0 w-full h-full object-cover object-[center_60%] z-[1] transition-opacity duration-1000 ${
+            videoReady ? 'opacity-100' : 'opacity-0'
+          }`}
         />
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
-
+        {/* <div className="absolute inset-0 bg-black/80 z-10" /> */}
+        {/* Inverted Vignette overlay */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background: `radial-gradient(ellipse at center, rgba(0,0,0,0.80) 10%, rgba(0,0,0,0.60) 100%)`
+          }}
+        />
+        
         {/* Content */}
-        <div className="relative z-20 flex flex-col items-center text-center px-6 gap-6 md:gap-6 mt-16 md:mt-0">
-          <h1 className="text-primary hidden md:block font-milchella font-normal text-[clamp(48px,8vw,100px)] leading-[100%]">
+        <div className="relative z-20 flex flex-col items-center text-center px-6 gap-6 md:gap-6 mt-16 md:-mt-8">
+          <h1 className="text-primary hidden md:block font-milchella font-normal text-[clamp(48px,8vw,80px)] leading-[100%]">
             {hero.title}
           </h1>
           {/* Mobile Title - explicit two lines */}
@@ -60,7 +83,7 @@ const Home = () => {
             <br />
             Walauwwe
           </h1>
-          <p className="font-poppins font-medium text-primary text-[14px] md:text-[18px] max-w-3xl leading-relaxed"></p>
+          <p className="font-poppins font-normal text-primary text-[13px] md:text-[16px] max-w-4xl leading-7 mt-2">{hero.description}</p>
 
           {/* Mobile Hero Buttons */}
           <div className="flex w-full flex-col gap-4 mt-4 md:hidden">
@@ -75,17 +98,17 @@ const Home = () => {
 
         {/* Watermark bottom */}
         {hero.watermark && (
-          <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 brightness-0 z-20 w-full max-w-4xl px-4">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-[824px] px-4">
             <img
               src={hero.watermark}
               alt="watermark"
-              className="w-full object-contain opacity-60"
+              className="w-full object-contain opacity-100 filter brightness-125 contrast-125"
             />
           </div>
         )}
 
         {/* ── Special Alert Banner ── */}
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-[0%] translate-y-1/2 z-30 w-[calc(100%-2rem)] max-w-[1063px] min-h-[110px] bg-[#FFFFFF1A] backdrop-blur-md rounded-[20px] flex flex-col md:flex-row items-center justify-between gap-6 px-6 py-6 md:px-[41px] md:py-0 shadow-2xl">
+        <div className="absolute left-1/2 -translate-x-1/2 -bottom-[5%] translate-y-1/2 z-30 w-[calc(100%-2rem)] max-w-[1000px] min-h-[110px] bg-[#FFFFFF1A] backdrop-blur-md rounded-[20px] flex flex-col md:flex-row items-center justify-between gap-6 px-6 py-6 md:px-[41px] md:py-0 shadow-2xl">
           {/* Gradient Border for Main Container */}
           <div
             className="absolute inset-0 pointer-events-none rounded-[20px]"
@@ -104,7 +127,7 @@ const Home = () => {
             <h3 className="font-wasted font-normal text-[24px] leading-[100%] m-0">
               {specialAlert.title}
             </h3>
-            <p className="font-poppins font-normal text-[16px] leading-[100%] text-white m-0">
+            <p className="font-poppins font-normal text-[16px] text-white m-0 tracking-[-0.5px]">
               {specialAlert.description}
             </p>
           </div>
@@ -126,7 +149,7 @@ const Home = () => {
               }}
             ></div>
 
-            <span className="relative z-10 font-poppins font-medium text-[16px] leading-[100%] text-white">
+            <span className="relative z-10 font-poppins text-[16px] leading-[160%] text-start ml-3 text-white">
               {specialAlert.buttonLabel}
             </span>
             <svg
@@ -155,10 +178,10 @@ const Home = () => {
         style={{ backgroundImage: `url(${explore.backgroundImage})` }}
       >
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-surface/70 z-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-surface/40 z-0 pointer-events-none" />
 
         {/* Left — Explore Cards Grid */}
-        <div className="relative z-10 w-full lg:w-1/2 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 mt-4 lg:mt-0">
+        <div className="relative z-10 w-full lg:w-1/2 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 mt-4 lg:mt-6">
           {explore.cards.map((card) => (
             <ExploreCard
               key={card.id}
@@ -171,14 +194,14 @@ const Home = () => {
         </div>
 
         {/* Right — Title + Description + Buttons */}
-        <div className="relative z-10 w-full lg:w-1/2 flex flex-col justify-center gap-6 mt-8 lg:mt-0">
-          <h2 className="text-primary font-milchella font-normal text-[clamp(40px,10vw,56px)] leading-[110%]">
+        <div className="relative z-10 w-full lg:w-[calc(50%-120px)] flex flex-col justify-center gap-6 mt-8 lg:mt-0">
+          <h2 className="text-primary font-milchella font-normal text-[clamp(32px,8vw,46px)]">
             {explore.title}
           </h2>
-          <p className="font-poppins font-light text-primary/80 text-[13px] lg:text-[15px] leading-2 lg:leading-7 text-justify">
+          <p className="font-poppins font-light text-primary/80 text-[13px] lg:text-[15px] leading-2 lg:leading-6 text-justify lg:tracking-wide">
             {explore.description1}
           </p>
-          <p className="font-poppins font-light text-primary/80 text-[13px] lg:text-[15px] leading-2 lg:leading-7 text-justify">
+          <p className="font-poppins font-light text-primary/80 text-[13px] lg:text-[15px] leading-2 lg:leading-6 text-justify lg:tracking-wide">
             {explore.description2}
           </p>
           <div className="flex flex-row w-full gap-4 mt-2 justify-end">
@@ -218,9 +241,9 @@ const Home = () => {
           <Slider {...settings}>
             {(recentNews.news.length <= 3
               ? [
-                  ...recentNews.news,
-                  ...recentNews.news.map((n) => ({ ...n, id: n.id + "_copy" })),
-                ]
+                ...recentNews.news,
+                ...recentNews.news.map((n) => ({ ...n, id: n.id + "_copy" })),
+              ]
               : recentNews.news
             ).map((item) => (
               <div key={item.id} className="px-4 py-8 outline-none h-full">
@@ -251,7 +274,7 @@ const Home = () => {
 
       {/* ── Highlights Section ── */}
       <section>
-        <Highlights />
+        {/* <Highlights /> */}
       </section>
     </main>
   );
