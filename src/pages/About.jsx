@@ -9,7 +9,7 @@ const About = () => {
   if (loading) return null;
 
   return (
-    <main className="w-full bg-surface overflow-x-hidden">
+    <main className="w-full bg-surface overflow-x-hidden img-protect" onContextMenu={(e) => { if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO' || e.target.tagName === 'svg' || e.target.closest('svg')) e.preventDefault(); }}>
 
       {/* ══════════════════════════════════════════════
           HERO SECTION
@@ -76,9 +76,9 @@ const About = () => {
       ══════════════════════════════════════════════ */}
       <section
         className="relative w-full px-6 md:px-16 lg:px-20 py-16 md:py-24 bg-cover bg-center"
-        style={{ backgroundImage: `url(${history.backgroundImage})` }}
+        // style={{ backgroundImage: `url(${history.backgroundImage})` }}
       >
-        {/* <div className="absolute inset-0 bg-black/60 z-0 pointer-events-none" /> */}
+        <div className="absolute inset-0 bg-[#1a1410] z-0 pointer-events-none" />
         {/* <div
           className="absolute inset-0 z-10 pointer-events-none"
           style={{

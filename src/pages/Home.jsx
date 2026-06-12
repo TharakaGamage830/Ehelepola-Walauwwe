@@ -4,9 +4,9 @@ import { useHomeData } from "../hooks/useHomeData";
 import ExploreCard from "../components/common/ExploreCard";
 import Highlights from "../components/section/Highlights";
 import NewsCard from "../components/common/NewsCard";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,29 +15,9 @@ const Home = () => {
 
   if (loading) return null;
 
-    const settings = {
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    arrows: false,
-    pauseOnHover: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2, slidesToScroll: 1 },
-      },
-      {
-        breakpoint: 820,
-        settings: { slidesToShow: 1, slidesToScroll: 1 },
-      },
-    ],
-  };
 
   return (
-    <main className="w-full bg-surface overflow-x-hidden">
+    <main className="w-full bg-surface overflow-x-hidden img-protect" onContextMenu={(e) => { if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO' || e.target.tagName === 'svg' || e.target.closest('svg')) e.preventDefault(); }}>
       {/* ── Hero Section ── */}
       <section className="relative w-full h-screen flex flex-col items-center justify-center">
         {/* Background Image — shows while video loads */}
@@ -55,16 +35,15 @@ const Home = () => {
           muted
           playsInline
           onCanPlay={() => setVideoReady(true)}
-          className={`absolute inset-0 w-full h-full object-cover object-[center_60%] z-[1] transition-opacity duration-1000 ${
-            videoReady ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover object-[center_60%] z-[1] transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'
+            }`}
         />
 
         {/* Inverted Vignette overlay */}
         <div
           className="absolute inset-0 z-10 pointer-events-none"
           style={{
-            background: `radial-gradient(ellipse at center, rgba(0,0,0,0.80) 10%, rgba(0,0,0,0.60) 100%)`
+            background: `radial-gradient(ellipse at center, rgba(26,20,16,0.70) 10%, rgba(26,20,16,0.40) 100%)`
           }}
         />
 
@@ -183,9 +162,18 @@ const Home = () => {
 
       {/* ── Explore Section ── */}
       <section
-        className="relative w-full flex flex-col lg:flex-row gap-10 px-6 lg:px-16 pt-[200px] lg:pt-28 pb-16 bg-cover bg-center z-20"
-        style={{ backgroundImage: `url(${explore.backgroundImage})` }}
+        className="relative w-full flex flex-col lg:flex-row gap-10 px-6 lg:px-16 pt-[200px] lg:pt-28 pb-16 z-20"
       >
+        {/* Background image with top/bottom fade-to-transparent */}
+        <div
+          className="absolute inset-0 z-0 pointer-events-none bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${explore.backgroundImage})`,
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
+          }}
+        />
+
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-surface/40 z-0 pointer-events-none" />
 
@@ -203,7 +191,7 @@ const Home = () => {
         </div>
 
         {/* Right — Title + Description + Buttons */}
-        <div className="relative z-10 w-full lg:w-[calc(50%-120px)] flex flex-col justify-center gap-6">
+        <div className="relative z-10 w-full lg:w-1/2 flex flex-col justify-center gap-6">
           <h2 className="text-primary font-milchella font-normal text-[clamp(32px,8vw,46px)]">
             {explore.title}
           </h2>
@@ -246,23 +234,36 @@ const Home = () => {
         </div>
 
         {/* Cards Slider */}
-        <div className="w-full max-w-[1400px] px-10 pb-12 [&_.slick-track]:!flex [&_.slick-slide]:h-auto [&_.slick-slide>div]:h-full [&_.slick-list]:overflow-hidden">
-          <Slider {...settings}>
+        <div className="w-full max-w-[1400px] px-10 pb-12">
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={1}
+            spaceBetween={16}
+            loop={true}
+            speed={500}
+            autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: false }}
+            breakpoints={{
+              768: { slidesPerView: 2, spaceBetween: 24 },
+              1024: { slidesPerView: 3, spaceBetween: 32 },
+            }}
+          >
             {(recentNews.news.length < 4
               ? [...recentNews.news, ...recentNews.news]
               : recentNews.news
             ).map((item, idx) => (
-              <div key={`${item.id}-${idx}`} className="px-4 py-8 outline-none h-full">
-                <div className="h-full">
-                  <NewsCard
-                    image={item.image}
-                    title={item.title}
-                    description={item.description}
-                  />
+              <SwiperSlide key={`${item.id}-${idx}`} style={{ height: "auto" }}>
+                <div className="px-4 py-8 h-full">
+                  <div className="h-full">
+                    <NewsCard
+                      image={item.image}
+                      title={item.title}
+                      description={item.description}
+                    />
+                  </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </Slider>
+          </Swiper>
         </div>
       </section>
 

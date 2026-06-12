@@ -3,6 +3,7 @@ const ExploreCard = ({
   description,
   backgroundImage = null,
   onExplore,
+  gradientColor = '#1a1410',
 }) => {
   const hasBg = !!backgroundImage;
 
@@ -26,7 +27,7 @@ const ExploreCard = ({
           className="absolute inset-x-0 top-0 z-10 pointer-events-none"
           style={{
             height: '45%',
-            background: `linear-gradient(to bottom, #131313 0%, #131313 30%, transparent 100%)`
+            background: `linear-gradient(to bottom, ${gradientColor} 0%, ${gradientColor} 30%, transparent 100%)`
           }}
         />
 
@@ -35,7 +36,7 @@ const ExploreCard = ({
           className="absolute inset-x-0 bottom-0 z-10 pointer-events-none"
           style={{
             height: '45%',
-            background: `linear-gradient(to top, #131313 0%, #131313 30%, transparent 100%)`
+            background: `linear-gradient(to top, ${gradientColor} 0%, ${gradientColor} 30%, transparent 100%)`
           }}
         />
         {/* Content */}

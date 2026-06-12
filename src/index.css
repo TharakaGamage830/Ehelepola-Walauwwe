@@ -9,6 +9,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Inter';
   src: url('./assets/fonts/inter/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
@@ -32,6 +33,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Poppins';
   src: url('./assets/fonts/poppins/Poppins-Bold.ttf') format('truetype');
@@ -39,6 +41,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Poppins';
   src: url('./assets/fonts/poppins/Poppins-SemiBold.ttf') format('truetype');
@@ -46,6 +49,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Poppins';
   src: url('./assets/fonts/poppins/Poppins-Medium.ttf') format('truetype');
@@ -53,6 +57,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Poppins';
   src: url('./assets/fonts/poppins/Poppins-Regular.ttf') format('truetype');
@@ -60,6 +65,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Poppins';
   src: url('./assets/fonts/poppins/Poppins-Light.ttf') format('truetype');
@@ -67,6 +73,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Poppins';
   src: url('./assets/fonts/poppins/Poppins-Thin.ttf') format('truetype');
@@ -86,5 +93,19 @@
 @layer base {
   body {
     @apply bg-surface text-primary antialiased;
+  }
+}
+
+/* ── Image Protection ── */
+@layer utilities {
+
+  .img-protect img,
+  .img-protect video,
+  .img-protect svg {
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    pointer-events: none;
   }
 }
