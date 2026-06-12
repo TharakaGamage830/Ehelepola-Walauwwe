@@ -85,7 +85,7 @@ const About = () => {
             background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 45%, #131313 100%)'
           }}
         /> */}
-        <div className="relative z-10 flex flex-col lg:flex-row gap-10 lg:gap-16 max-w-7xl mx-auto">
+        <div className="relative z-10 flex flex-col-reverse lg:flex-row gap-10 lg:gap-16 max-w-7xl mx-auto">
 
           {/* Left — Images */}
           <div className="w-full lg:w-[60%] flex flex-col gap-8">
@@ -102,7 +102,7 @@ const About = () => {
               {history.thumbnails.map((thumb, i) => (
                 <div
                   key={i}
-                  className="rounded-[20px] overflow-hidden"
+                  className="rounded-[12px] overflow-hidden"
                   style={{ aspectRatio: '220/133' }}
                 >
                   <img
@@ -116,7 +116,7 @@ const About = () => {
           </div>
 
           {/* Right — Text */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center gap-6 ml-5">
+          <div className="w-full lg:w-1/2 flex flex-col justify-center gap-6 md:ml-5 px-1 md:px-0">
             <h2
               className="text-primary"
               style={{
@@ -211,7 +211,7 @@ const About = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 [&>*]:w-full">
+        <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 [&>*]:w-full px-10 md:px-0">
           {premiumPlaces.cards.map((card) => (
             <ExploreCard
               key={card.id}

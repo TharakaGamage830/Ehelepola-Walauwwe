@@ -53,7 +53,7 @@ const ExploreCard = ({
           {!hasBg && <div className="w-10 h-[1px] bg-primary/40" />}
 
           {/* Description */}
-          <p className={`font-poppins mb-12 font-light text-[14px] max-w-[200px] ${hasBg ? 'text-white/90' : 'text-primary/90'}`}>
+          <p className={`font-poppins mb-12 font-light text-[14px] px-4 ${hasBg ? 'text-white/90' : 'text-primary/90'}`}>
             {description}
           </p>
         </div>
